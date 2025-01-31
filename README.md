@@ -1,35 +1,27 @@
 # PoliJuego
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+PoliJuego es un juego desarrollado con libGDX, utilizando el generador de proyectos gdx-liftoff.
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+Este proyecto tiene como objetivo proporcionar una experiencia de juego interactiva, permitiendo a los jugadores explorar un entorno en 2D mientras enfrentan enemigos, resuelven obstáculos y utilizan mecánicas de juego como saltos y colisiones.
 
-## Platforms
+## 🚀 Autores
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
-- `android`: Android mobile platform. Needs Android SDK.
+- Alex Villaroel
+- Erick Caiza
+- Francisco Caero
 
-## Gradle
+## 📦 Plataformas
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+Este proyecto se ha diseñado para ser ejecutado en las siguientes plataformas:
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `android:lint`: performs Android project validation.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
+- **core**: Módulo principal que contiene la lógica de la aplicación, compartida por todas las plataformas.
+- **lwjgl3**: Plataforma principal para escritorio utilizando LWJGL3, antes conocida como 'desktop' en documentación antigua.
+- **android**: Plataforma móvil para Android. Requiere Android SDK para su desarrollo y ejecución.
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+## 🛠️ Requisitos
+
+Para ejecutar este proyecto en tu máquina local, asegúrate de tener los siguientes requisitos:
+
+- **Java Development Kit (JDK) 8 o superior**
+- **Android SDK** (para la plataforma Android)
+- **Gradle** (si prefieres no usar el wrapper, aunque el proyecto ya lo incluye)

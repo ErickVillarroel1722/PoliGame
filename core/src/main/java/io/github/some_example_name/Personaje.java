@@ -3,6 +3,7 @@ package io.github.some_example_name;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Personaje {
     private Texture texture;
@@ -11,6 +12,7 @@ public class Personaje {
     private boolean enElAire = false;
     private static final float GRAVEDAD = -0.5f; // Gravedad para el salto
     private static final float VELOCIDAD_SALTO = 15f; // Velocidad inicial de salto
+    private Rectangle bounds; // Área de colisión
 
     public Personaje(String texturePath, float x, float y) {
         try {
@@ -20,11 +22,13 @@ public class Personaje {
         }
         this.x = x;
         this.y = y;
+        this.bounds = new Rectangle(x, y, texture.getWidth(), texture.getHeight()); // Definir el área de colisión
     }
 
     public void mover(float deltaX, float deltaY) {
         x += deltaX;
         y += deltaY;
+        bounds.setPosition(x, y); // Actualizar la posición del área de colisión
     }
 
     // Método para saltar
@@ -47,6 +51,8 @@ public class Personaje {
                 enElAire = false;
             }
         }
+
+        bounds.setPosition(x, y); // Actualizar la posición del área de colisión
     }
 
     public void render(SpriteBatch batch) {
@@ -65,5 +71,10 @@ public class Personaje {
 
     public float getY() {
         return y;
+    }
+
+    // Método para obtener el área de colisión del personaje
+    public Rectangle getBounds() {
+        return bounds;
     }
 }

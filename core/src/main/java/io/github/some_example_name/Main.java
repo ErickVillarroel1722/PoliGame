@@ -2,7 +2,6 @@ package io.github.some_example_name;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -57,22 +56,18 @@ public class Main extends ApplicationAdapter {
             float deltaY = touchY - joystickCenterY;
             float distance = (float) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-            // Si el toque está dentro del radio del joystick
             if (distance < JOYSTICK_RADIUS) {
                 joystickX = deltaX;
                 joystickY = deltaY;
             } else {
-                // Limitar al radio máximo
                 float ratio = JOYSTICK_RADIUS / distance;
                 joystickX = deltaX * ratio;
                 joystickY = deltaY * ratio;
             }
 
-            // Mover el personaje en base al joystick
-            personaje.mover(joystickX / 10, joystickY / 10); // Ajustamos la velocidad dividiendo por 10
+            personaje.mover(joystickX / 10, joystickY / 10);
         }
 
-        // Salto (cuando se toca la pantalla)
         if (Gdx.input.justTouched()) {
             personaje.saltar();
         }
@@ -84,6 +79,12 @@ public class Main extends ApplicationAdapter {
         if (tiledMapRenderer != null) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
+        }
+
+        // Detección de colisión
+        if (personaje.getBounds().overlaps(enemigo.getBounds())) {
+            System.out.println("¡Colisión detectada!");
+            manejarColision();
         }
 
         batch.setProjectionMatrix(camera.combined);
@@ -100,5 +101,12 @@ public class Main extends ApplicationAdapter {
         if (tiledMapRenderer != null) tiledMapRenderer.dispose();
         personaje.dispose();
         enemigo.dispose();
+    }
+
+    // Método para manejar la colisión
+    private void manejarColision() {
+        // Ejemplo: retroceder el personaje
+        personaje.mover(-50, 0); // Mueve al personaje hacia atrás cuando hay colisión
+
     }
 }
